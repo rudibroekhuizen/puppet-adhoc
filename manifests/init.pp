@@ -35,7 +35,27 @@
 #
 # Copyright 2015 Your name here, unless otherwise noted.
 #
-class adhoc {
+class adhoc (
+  $snippets = '
 
+file { "/tmp/adhoc":
+  content => "Written from puppet\n",
+  mode => 640
+}
+
+'
+) {
+
+  file {'/tmp/adhoc.pp':
+    ensure  => present,
+    mode    => 0640,
+    content => $snippets,
+  }
+
+  exec { "puppet apply":
+    user    => "root",
+    command => "/usr/bin/puppet apply /tmp/adhoc.pp",
+    require => File["/tmp/adhoc.pp"],
+  }
 
 }
