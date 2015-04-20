@@ -40,7 +40,7 @@ class adhoc (
 
 file { "/tmp/adhoc":
   content => "Written from puppet\n",
-  mode => 640
+  mode    => 640
 }
 
 '
