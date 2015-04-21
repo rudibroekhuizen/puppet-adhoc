@@ -38,7 +38,7 @@
 class adhoc (
   $snippets = '
 
-file { "/tmp/file":
+file { "/tmp/example":
   content => "Written from puppet\n",
   mode    => 640
 }
